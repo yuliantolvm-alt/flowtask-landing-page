@@ -48,8 +48,8 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    color: #172033;
-    background: #ffffff;
+    color: var(--text);
+    background: var(--white);
     line-height: 1.6;
 }
 
@@ -95,53 +95,58 @@ a {
     margin: 0 auto;
 }
 
-
 /* =========================================
    3. BUTTONS
 ========================================= */
+
 .menu-toggle {
     display: none;
     border: none;
     background: transparent;
-    color: #17182f;
+    color: var(--heading);
     font-size: 25px;
     cursor: pointer;
 }
 
-.btn {
+.btn,
+.primary-btn,
+.secondary-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
 
     min-height: 48px;
-    padding: 0 22px;
+    padding: 12px 22px;
 
     border-radius: var(--radius-sm);
 
     font-size: 15px;
     font-weight: 600;
-
     text-decoration: none;
 
     cursor: pointer;
 
-    transition: 
+    transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
-        background 0.2s ease;
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
 }
 
 .primary-btn {
     background: var(--primary);
     color: var(--white);
-    box-shadow: 0 8px 20px rgba(91, 92, 240, 0.22);
+    border: 1px solid var(--primary);
+    box-shadow: var(--shadow-sm);
 }
 
 .primary-btn:hover {
     background: var(--primary-dark);
+    border-color: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(91, 92, 240, 0.28);
+    box-shadow: var(--shadow-md);
 }
 
 .secondary-btn {
@@ -152,42 +157,23 @@ a {
 
 .secondary-btn:hover {
     background: var(--surface);
-    transform: translateY(-2px)
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
 }
 
 .login-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: 0.25s ease;
-}
-
-.primary-btn {
-    padding: 13px 22px;
-    border-radius: 9px;
-    background: #5b5cf0;
-    color: #ffffff;
+    color: var(--text);
+    font-size: 14px;
     font-weight: 600;
-    box-shadow: 0 8px 20px rgba(91, 92, 240, 0.18);
+    transition: color 0.2s ease;
 }
 
-.primary-btn:hover {
-    background: #4647d8;
-    transform: translateY(-2px);
-}
-
-.secondary-btn {
-    padding: 12px 21px;
-    border: 1px solid #d9dce8;
-    border-radius: 9px;
-    background: #ffffff;
-    color: #172033;
-    font-weight: 600;
-}
-
-.secondary-btn:hover {
-    border-color: #5b5cf0;
-    color: #5b5cf0;
+.login-btn:hover {
+    color: var(--primary);
 }
 
 
@@ -392,24 +378,39 @@ a {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 13px 15px;
-    border: 1px solid #eeeeF4;
-    border-radius: 9px;
-    color: #4e5568;
+
+    padding: 14px 16px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+
+    color: var(--text);
     font-size: 13px;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.task:hover {
+    background: var(--surface);
+    border-color: rgba(91, 92, 240, 0.25);
 }
 
 .task-status {
+    flex-shrink: 0;
     width: 10px;
     height: 10px;
+
     border: 2px solid #c9ccda;
     border-radius: 50%;
 }
 
 .task-status.completed {
-    border-color: #5b5cf0;
-    background: #5b5cf0;
+    border-color: var(--primary);
+    background: var(--primary);
 }
+
 
 
 /* =========================================
@@ -493,10 +494,13 @@ a {
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     background: var(--white);
-    transition: 
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
         transform 0.25s ease,
-        box-shadow 0.25 ease;
-        border-color: 0.25s ease;
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .feature-card:hover {
@@ -508,17 +512,20 @@ a {
 .feature-icon {
     width: 48px;
     height: 48px;
+
     display: grid;
     place-items: center;
-    align-items: center;
-    justify-content: center;
+
     margin-bottom: 20px;
+
     border-radius: 12px;
     background: var(--primary-light);
     color: var(--primary);
+
     font-size: 20px;
     font-weight: 700;
 }
+
 
 .feature-card h3 {
     margin-bottom: 10px;
@@ -595,14 +602,19 @@ a {
         box-shadow 0.25s ease;
 }
 
-.picing-card:hover {
+.pricing-card:hover {
+    transform: translateY(-1.5px);
+    border-color: rgba(91, 92, 240, 0.4);
+    box-shadow: var(--shadow-md);
+}
+
+.pricing-card.featured {
     border: 2px solid var(--primary);
     box-shadow: 0 20px 45px rgba(91, 92, 240, 0.14);
 }
 
-.pricing-card.featured {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 35px rgba(91, 92, 240, 0.10);
+.pricing-card.featured:hover {
+    transform: translateY(-8px);
 }
 
 .popular {
